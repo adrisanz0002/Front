@@ -84,7 +84,6 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
         })
         .catch(function (error) {
           if (error.response) {
-            console.log(error.response.data.message);
             setShowAlert(true);
             setAlertMsg(error.response.data.message);
           }
@@ -103,7 +102,6 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
         })
         .catch(function (error) {
           if (error.response) {
-            console.log(error.response.data.message);
             setShowAlert(true);
             setAlertMsg(error.response.data.message);
           }
@@ -121,7 +119,6 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
     const re = /^[0-9\b]+$/;
     const resultValidation = re.test(importe);
     setImporteValidation(!resultValidation);
-    console.log(resultValidation);
     validarObligatorios();
     if (showImporteValidation && showTlfValidation & showObligadoValidation) {
       setEnabledButton(!resultValidation);
@@ -131,14 +128,12 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
     const re = /^[0-9\b]+$/;
     const resultValidation = re.test(tlf) && tlf.length == 9;
     setTlfValidation(!resultValidation);
-    console.log(resultValidation);
     validarObligatorios();
     if (showImporteValidation && showTlfValidation & showObligadoValidation) {
       setEnabledButton(!resultValidation);
     }
   };
   const validarObligatorios = () => {
-    console.log(nombreValue.current.value);
     if (
       nombreValue.current.value == "" ||
       apellidosValue.current.value == "" ||
@@ -150,7 +145,6 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
       fechaValue.current.value == ""
     ) {
       setObligatorioValidation(true);
-      console.log("ola");
     } else {
       setObligatorioValidation(false);
 

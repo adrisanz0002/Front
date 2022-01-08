@@ -110,11 +110,6 @@ const RegistroComponent = () => {
     setEmailValidation(resultValidation);
   };
   useEffect(() => {
-    console.log("usefectalertmsg", alertMsg)
-    console.log("usefectshow", showAlert)
-
-  }, [alertMsg, showAlert]);
-  useEffect(() => {
     validateEmail(emailRef.current.value);
   }, []);
   return (

@@ -74,9 +74,6 @@ const Propiedad = () => {
         },
       })
       .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data.message);
-        }
       });
     router.push({
       pathname: "/propiedad",

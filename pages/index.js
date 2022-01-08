@@ -66,7 +66,6 @@ export default function Home() {
     const importeF = 0;
     const labelsF = [];
     const importesF = [];
-    console.log("facturas")
     facturas.forEach(function (factura, index) {
       importeF = importeF + factura.importe;
       labelsF.push(factura.categoria);

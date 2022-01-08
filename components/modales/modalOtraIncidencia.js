@@ -67,7 +67,6 @@ const ModalOtraIncidencia = ({ tipoAccion, otraIncidenciaEditar }) => {
   };
 
   useEffect(() => {
-    console.log("idmodal",otraIncidenciaEditar)
     if (tipoAccion === "editar") {
       getOtraIncidenciaById();
       setIsReadonly(false);
@@ -123,7 +122,6 @@ const ModalOtraIncidencia = ({ tipoAccion, otraIncidenciaEditar }) => {
           }
         });
       if (!showAlert) {
-        console.log(showAlert);
         router.push({
           pathname: "/otraIncidencia",
           query: { returnUrl: router.asPath },

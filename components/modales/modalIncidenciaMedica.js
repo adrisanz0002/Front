@@ -124,7 +124,6 @@ const ModalIncidenciaMedica = ({ tipoAccion, incidenciaEditar }) => {
           }
         });
       if (!showAlert) {
-        console.log(showAlert);
         router.push({
           pathname: "/incidenciaMedica",
           query: { returnUrl: router.asPath },

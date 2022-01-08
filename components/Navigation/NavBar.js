@@ -15,7 +15,6 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(usuario);
     if (usuario !== null) {
       setLogged(true);
     }

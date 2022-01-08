@@ -76,14 +76,12 @@ const Factura = () => {
       })
       .catch(function (error) {
         if (error.response) {
-          console.log(error.response.data.message);
         }
       });
     router.push({
       pathname: "/factura",
       query: { returnUrl: router.asPath },
     });
-    console.log(resultado);
   };
   useEffect(() => {
     getFacturas();

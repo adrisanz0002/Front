@@ -57,7 +57,6 @@ const IncidenciaMedica = () => {
     onOpen();
   };
   const onButtonClickRead = (id) => {
-    console.log("id,", id);
     setTipoAccion("read");
     setId(id);
     onOpen();
@@ -70,7 +69,6 @@ const IncidenciaMedica = () => {
     getIncidencias();
   }, []);
   const onButtonClickDelete = async (id) => {
-    console.log(id)
     const resultado = await axios
       .delete(`http://localhost:4000/api/incidenciasMedicas/` + id, {
         headers: {
@@ -79,9 +77,6 @@ const IncidenciaMedica = () => {
         },
       })
       .catch(function (error) {
-        if (error.response) {
-          console.log(error.response.data.message);
-        }
       });
     router.push({
       pathname: "/incidenciaMedica",

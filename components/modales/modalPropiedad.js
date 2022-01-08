@@ -64,7 +64,6 @@ const ModalPropiedad = ({ tipoAccion, propiedadEditar }) => {
           res.data.fechaAdquisicion.substring(8, 10);
         setPropiedad(res.data);
       });
-    console.log(propiedad);
   };
   const onButtonClick = async () => {
     const datos = {
@@ -85,13 +84,11 @@ const ModalPropiedad = ({ tipoAccion, propiedadEditar }) => {
         })
         .catch(function (error) {
           if (error.response) {
-            console.log(error.response.data.message);
             setShowAlert(true);
             setAlertMsg(error.response.data.message);
           }
         });
       if (!showAlert) {
-        console.log(showAlert);
         router.push({
           pathname: "/propiedad",
           query: { returnUrl: router.asPath },

@@ -38,7 +38,6 @@ const AuthComponent = () => {
           setAlertMsg(error.response.data.message);
         }
       });
-    console.log(result.data);
     localStorage.setItem("User", result.data.userFound.username);
     localStorage.setItem("Email", result.data.userFound.email);
     localStorage.setItem("AuthToken", result.data.token);
