@@ -76,8 +76,7 @@ const IncidenciaMedica = () => {
           "x-access-token": localStorage.getItem("AuthToken"),
         },
       })
-      .catch(function (error) {
-      });
+      .catch(function (error) {});
     router.push({
       pathname: "/incidenciaMedica",
       query: { returnUrl: router.asPath },
@@ -110,7 +109,7 @@ const IncidenciaMedica = () => {
           </Thead>
           <Tbody>
             {incidencias.map((incidencia) => (
-              <Tr key ={incidencia._id}>
+              <Tr key={incidencia._id}>
                 <Td>{incidencia.paciente}</Td>
                 <Td>{incidencia.sanitario}</Td>
                 <Td>{incidencia.especialidad}</Td>
@@ -146,22 +145,23 @@ const IncidenciaMedica = () => {
                   >
                     <AiFillEye size={20}></AiFillEye>
                   </Button>
-                  <Modal
-                    initialFocusRef={initialRef}
-                    finalFocusRef={finalRef}
-                    isOpen={isOpen}
-                    onClose={onClose}
-                  >
-                    <ModalIncidenciaMedica
-                      tipoAccion={tipoAccion}
-                      incidenciaEditar={id}
-                    ></ModalIncidenciaMedica>
-                  </Modal>
                 </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
+
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalIncidenciaMedica
+            tipoAccion={tipoAccion}
+            incidenciaEditar={id}
+          ></ModalIncidenciaMedica>
+        </Modal>
         <Button
           colorScheme="teal"
           variant="solid"

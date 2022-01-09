@@ -1,8 +1,15 @@
 import { Stack, Text } from "@chakra-ui/react";
 import PasswordInput from "./PasswordInput";
 import { useRef, useState, useEffect, useContext } from "react";
-import { FormControl, Flex, Input, Button, Box, Alert,
-  AlertIcon, } from "@chakra-ui/react";
+import {
+  FormControl,
+  Flex,
+  Input,
+  Button,
+  Box,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 import axios from "axios";
 import ShowAlert from "../Alerts/ShowAlert";
 import Link from "next/link";
@@ -16,7 +23,7 @@ const AuthComponent = () => {
   const emailRef = useRef();
   const passwordValue = useRef();
   const router = useRouter();
-  const {setUsuario} = useContext(ContextoUsuario)
+  const { setUsuario } = useContext(ContextoUsuario);
 
   const onButtonClick = async () => {
     const result = await axios
@@ -38,15 +45,17 @@ const AuthComponent = () => {
           setAlertMsg(error.response.data.message);
         }
       });
-    localStorage.setItem("User", result.data.userFound.username);
-    localStorage.setItem("Email", result.data.userFound.email);
-    localStorage.setItem("AuthToken", result.data.token);
-    setUsuario(result.data.userFound.username)
+    if (result !== undefined) {
+      localStorage.setItem("User", result.data.userFound.username);
+      localStorage.setItem("Email", result.data.userFound.email);
+      localStorage.setItem("AuthToken", result.data.token);
+      setUsuario(result.data.userFound.username);
 
-    router.push({
-      pathname: "/",
-      query: { returnUrl: router.asPath },
-    });
+      router.push({
+        pathname: "/",
+        query: { returnUrl: router.asPath },
+      });
+    }
   };
   const closeAlert = () => {
     setShowAlert(false);
@@ -122,9 +131,7 @@ const AuthComponent = () => {
             <ShowAlert closeAlert={closeAlert} AlertMsg={alertMsg} />
           )}
           <Box>
-            <Link  href="/registro">
-              ¿Todavía no estas registrado?
-            </Link>
+            <Link href="/registro">¿Todavía no estas registrado?</Link>
           </Box>
         </Box>
       </Flex>

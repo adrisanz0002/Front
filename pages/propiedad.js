@@ -24,7 +24,7 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import axios from "axios";
 import ModalPropiedad from "../components/modales/modalPropiedad";
 import { useRef, useState, useEffect, useContext } from "react";
@@ -62,9 +62,9 @@ const Propiedad = () => {
     onOpen();
   };
   const Delete = (id) => {
-    setIsOpenAlert(true)
-    setId(id)
-  }
+    setIsOpenAlert(true);
+    setId(id);
+  };
   const onButtonClickDelete = async (id) => {
     const resultado = await axios
       .delete(`http://localhost:4000/api/propiedades/` + id, {
@@ -73,8 +73,7 @@ const Propiedad = () => {
           "x-access-token": localStorage.getItem("AuthToken"),
         },
       })
-      .catch(function (error) {
-      });
+      .catch(function (error) {});
     router.push({
       pathname: "/propiedad",
       query: { returnUrl: router.asPath },
@@ -145,22 +144,22 @@ const Propiedad = () => {
                   >
                     <AiFillEye size={20}></AiFillEye>
                   </Button>
-                  <Modal
-                    initialFocusRef={initialRef}
-                    finalFocusRef={finalRef}
-                    isOpen={isOpen}
-                    onClose={onClose}
-                  >
-                    <ModalPropiedad
-                      tipoAccion={tipoAccion}
-                      propiedadEditar={id}
-                    ></ModalPropiedad>
-                  </Modal>
                 </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalPropiedad
+            tipoAccion={tipoAccion}
+            propiedadEditar={id}
+          ></ModalPropiedad>
+        </Modal>
         <Button
           colorScheme="teal"
           variant="solid"
@@ -170,7 +169,8 @@ const Propiedad = () => {
           onClick={onButtonClickAdd}
         >
           Añadir
-        </Button><AlertDialog
+        </Button>
+        <AlertDialog
           isOpen={isOpenAlert}
           leastDestructiveRef={cancelRef}
           onClose={onCloseAlert}
@@ -181,15 +181,17 @@ const Propiedad = () => {
                 Propiedad
               </AlertDialogHeader>
 
-              <AlertDialogBody>
-                ¿Desea eliminarlo?
-              </AlertDialogBody>
+              <AlertDialogBody>¿Desea eliminarlo?</AlertDialogBody>
 
               <AlertDialogFooter>
                 <Button ref={cancelRef} onClick={onCloseAlert}>
                   Cancelar
                 </Button>
-                <Button colorScheme="red" onClick={() => onButtonClickDelete(id)} ml={3}>
+                <Button
+                  colorScheme="red"
+                  onClick={() => onButtonClickDelete(id)}
+                  ml={3}
+                >
                   Borrar
                 </Button>
               </AlertDialogFooter>

@@ -60,7 +60,6 @@ const OtraIncidencia = () => {
     setTipoAccion("read");
     setId(id);
     onOpen();
-
   };
   const Delete = (id) => {
     setIsOpenAlert(true);
@@ -74,9 +73,7 @@ const OtraIncidencia = () => {
           "x-access-token": localStorage.getItem("AuthToken"),
         },
       })
-      .catch(function (error) {
-        
-      });
+      .catch(function (error) {});
     router.push({
       pathname: "/otraIncidencia",
       query: { returnUrl: router.asPath },
@@ -147,22 +144,22 @@ const OtraIncidencia = () => {
                   >
                     <AiFillEye size={20}></AiFillEye>
                   </Button>
-                  <Modal
-                    initialFocusRef={initialRef}
-                    finalFocusRef={finalRef}
-                    isOpen={isOpen}
-                    onClose={onClose}
-                  >
-                    <ModalOtraIncidencia
-                      tipoAccion={tipoAccion}
-                      otraIncidenciaEditar={id}
-                    ></ModalOtraIncidencia>
-                  </Modal>
                 </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalOtraIncidencia
+            tipoAccion={tipoAccion}
+            otraIncidenciaEditar={id}
+          ></ModalOtraIncidencia>
+        </Modal>
         <Button
           colorScheme="teal"
           variant="solid"

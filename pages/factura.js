@@ -4,7 +4,7 @@ import {
   Text,
   Button,
   useDisclosure,
-  Modal
+  Modal,
 } from "@chakra-ui/react";
 import {
   AlertDialog,
@@ -13,7 +13,7 @@ import {
   AlertDialogHeader,
   AlertDialogContent,
   AlertDialogOverlay,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 import { AiFillDelete, AiFillEye, AiFillEdit } from "react-icons/ai";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { useRef, useState, useEffect, useContext } from "react";
@@ -63,9 +63,9 @@ const Factura = () => {
     onOpen();
   };
   const Delete = (id) => {
-    setIsOpenAlert(true)
-    setId(id)
-  }
+    setIsOpenAlert(true);
+    setId(id);
+  };
   const onButtonClickDelete = async (id) => {
     const resultado = await axios
       .delete(`http://localhost:4000/api/facturas/` + id, {
@@ -148,22 +148,22 @@ const Factura = () => {
                   >
                     <AiFillEye size={20}></AiFillEye>
                   </Button>
-                  <Modal
-                    initialFocusRef={initialRef}
-                    finalFocusRef={finalRef}
-                    isOpen={isOpen}
-                    onClose={onClose}
-                  >
-                    <ModalFactura
-                      tipoAccion={tipoAccion}
-                      facturaEditar={id}
-                    ></ModalFactura>
-                  </Modal>
                 </Td>
               </Tr>
             ))}
           </Tbody>
         </Table>
+        <Modal
+          initialFocusRef={initialRef}
+          finalFocusRef={finalRef}
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalFactura
+            tipoAccion={tipoAccion}
+            facturaEditar={id}
+          ></ModalFactura>
+        </Modal>
         <Button
           colorScheme="teal"
           variant="solid"
@@ -185,15 +185,17 @@ const Factura = () => {
                 Factura
               </AlertDialogHeader>
 
-              <AlertDialogBody>
-                ¿Desea eliminarlo?
-              </AlertDialogBody>
+              <AlertDialogBody>¿Desea eliminarlo?</AlertDialogBody>
 
               <AlertDialogFooter>
                 <Button ref={cancelRef} onClick={onCloseAlert}>
                   Cancelar
                 </Button>
-                <Button colorScheme="red" onClick={() => onButtonClickDelete(id)} ml={3}>
+                <Button
+                  colorScheme="red"
+                  onClick={() => onButtonClickDelete(id)}
+                  ml={3}
+                >
                   Borrar
                 </Button>
               </AlertDialogFooter>

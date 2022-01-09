@@ -220,8 +220,7 @@ const ModalFactura = ({ tipoAccion, facturaEditar }) => {
 
             <FormLabel>Telefono</FormLabel>
             <InputGroup>
-              <InputLeftAddon>
-              +234</InputLeftAddon>
+              <InputLeftAddon>+234</InputLeftAddon>
               <Input
                 type="tel"
                 placeholder="phone number"
